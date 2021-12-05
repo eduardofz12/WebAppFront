@@ -1,0 +1,55 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card>
+    <mat-card-title>Cadastro de Projeto de inovação</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" required minlength="5" maxlength="60">
+                <mat-error *ngIf="hasError('titulo', 'required')">Título é obrigatório</mat-error>
+                <mat-error *ngIf="hasError('titulo', 'minlength')">Título deve ter pelo menos 5 caracteres</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao">
+            </mat-form-field>
+            <div>
+                <mat-form-field appearance="outline" style="width:10%">
+                    <mat-label>Código ideia</mat-label>
+                    <input matInput type="number" formControlName="ideiaCodigo" (focusout)="findIdeia($event)" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width:90%; padding-left: 15px;">
+                    <mat-label>Título ideia</mat-label>
+                    <input matInput formControlName="ideiaTitulo" readonly required>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" style="width:10%">
+                    <mat-label>Código responsável</mat-label>
+                    <input matInput formControlName="responsavelCodigo" (focusout)="findResponsavel($event)" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width:90%; padding-left: 15px;">
+                    <mat-label>Nome responsável</mat-label>
+                    <input matInput formControlName="responsavelNome" readonly required>
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline" id="start-date">
+                <mat-label>Data inicio</mat-label>
+                <input  matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate" formControlName="dataInicio">
+                <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="end-date">
+                <mat-label>Data término</mat-label>
+                <input matInput  [min]="minDate" [max]="maxDate" [matDatepicker]="endDate" formControlName="dataTermino">
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button mat-stroked-button type="reset">Limpar</button>
+                <button mat-stroked-button color="primary" [disabled]="!form.valid"
+                    (click)="onSubmit()">Cadastrar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

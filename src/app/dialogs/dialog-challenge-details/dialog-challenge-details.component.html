@@ -1,0 +1,27 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card *ngIf="challenge">
+    <mat-card-title>{{"Detalhes do desafio " + challenge.id}}</mat-card-title>
+    <mat-card-content>
+        <span>
+            Título: {{challenge.titulo}}
+        </span>
+        <br>
+        <br>
+        <span>
+            Descrição: {{challenge.descricao}}
+        </span>
+        <br>
+        <br>
+        <span>
+            Data inclusão: {{challenge.dataInclusao|date}}
+        </span>
+        <br>
+        <br>
+        <span>
+            Data final: {{challenge.dataFinal|date}}
+        </span>
+        <mat-card-actions align="end" style="display:bottom">
+            <button mat-stroked-button color="primary" (click)="goToIdea()">Cadastrar ideia</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>

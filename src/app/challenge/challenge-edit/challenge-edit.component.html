@@ -1,0 +1,39 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+<mat-card class="loading">
+    <mat-card-title>{{ challenge != null ? "Edição do desafio " + challenge.id : "Cadastro de desafio" }}</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" required maxlength="60">
+                <mat-hint align="end">Máximo de 60 caracteres.</mat-hint>
+                <mat-error *ngIf="hasError('titulo', 'required')">Título é obrigatório</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="descricao" required></textarea>
+                <mat-error *ngIf="hasError('descricao', 'required')">Descrição é obrigatória</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" >
+                <mat-label>Situação</mat-label>
+                <mat-select formControlName="situacao" disableOptionCentering [disabled]="challenge == null">
+                  <mat-option [value]="option.id" *ngFor="let option of situacoes">{{ option.descricao }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="end-date">
+                <mat-label>Data fim</mat-label>
+                <input matInput [matDatepicker]="endDate" formControlName="dataFinal">
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button *ngIf=challenge mat-stroked-button (click)="newChallenge()" style="margin: 0px">Novo</button>
+                <button mat-stroked-button type="reset">Limpar</button>
+                <button mat-stroked-button color="primary" [disabled]="!form.valid"
+                    (click)="onSubmit()">{{ challenge != null ? "Salvar" : "Cadastrar" }}</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>
+

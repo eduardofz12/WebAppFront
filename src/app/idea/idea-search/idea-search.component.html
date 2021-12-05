@@ -1,0 +1,79 @@
+<mat-card>
+    <mat-card-title>Consulta de ideias</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" maxlength="60">
+                <mat-hint align="end">Máximo de 60 caracteres.</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Situação</mat-label>
+                <mat-select [(value)]="selectedSit">
+                  <mat-option [value]="option.value" *ngFor="let option of situacoes">{{ option.viewValue }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="start-date">
+                <mat-label>Data inicial</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate" formControlName="dataInicial">
+                <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="end-date">
+                <mat-label>Data final</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="endDate" formControlName="dataFinal">
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button mat-stroked-button type="reset">Limpar</button>
+                <button mat-stroked-button color="primary" [disabled]="!form.valid"
+                    (click)="onSubmit()">Cadastrar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>
+  
+<div class="mat-elevation-z1">
+
+<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Título</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Situação</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.title}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Data abertura</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.state}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+
+        <mat-cell *matCellDef="let row; let i=index;">
+            <button mat-icon-button color="accent">
+                <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button color="accent">
+                <mat-icon aria-label="Delete">delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+</div>
+  

@@ -1,0 +1,115 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card>
+    <mat-card-title>Consulta de projetos de inovação</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" maxlength="60">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Situação</mat-label>
+                <mat-select formControlName="situacao" disableOptionCentering>
+                  <mat-option [value]="option.id" *ngFor="let option of situacoes">{{ option.descricao }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div>
+                <mat-form-field appearance="outline" style="width:10%">
+                    <mat-label>Responsável</mat-label>
+                    <input matInput formControlName="responsavelCodigo" (focusout)="findResponsavel($event)">
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width:90%; padding-left: 15px;">
+                    <mat-label>Nome responsável</mat-label>
+                    <input matInput formControlName="responsavelNome" readonly>
+                </mat-form-field>
+            </div>
+            <mat-form-field appearance="outline" id="start-date-inicio">
+                <mat-label>Data inclusão inicio</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDateInicio" formControlName="dataInclusaoInicio">
+                <mat-datepicker-toggle matSuffix (click)="clearDate('dataInclusaoInicio')">
+                    <mat-icon matDatepickerToggleIcon>clear</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="startDateInicio"></mat-datepicker-toggle>
+                <mat-datepicker #startDateInicio></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="start-date-fim">
+                <mat-label>Data inclusão fim</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDateFim" formControlName="dataInclusaoFim">
+                <mat-datepicker-toggle matSuffix (click)="clearDate('dataInclusaoFim')">
+                    <mat-icon matDatepickerToggleIcon>clear</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="startDateFim"></mat-datepicker-toggle>
+                <mat-datepicker #startDateFim></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="end-date-inicio">
+                <mat-label>Data final inicio</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="endDateInicio" formControlName="dataFinalInicio">
+                <mat-datepicker-toggle matSuffix (click)="clearDate('dataFinalInicio')">
+                    <mat-icon matDatepickerToggleIcon>clear</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="endDateInicio"></mat-datepicker-toggle>
+                <mat-datepicker #endDateInicio></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="end-date-fim">
+                <mat-label>Data final fim</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="endDateFim" formControlName="dataFinalFim">
+                <mat-datepicker-toggle matSuffix (click)="clearDate('dataFinalFim')">
+                    <mat-icon matDatepickerToggleIcon>clear</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker-toggle matSuffix [for]="endDateFim"></mat-datepicker-toggle>
+                <mat-datepicker #endDateFim></mat-datepicker>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button mat-stroked-button type="reset">Limpar</button>
+                <button mat-stroked-button color="primary" [disabled]="!form.valid"
+                    (click)="onSubmit()">Pesquisar
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>
+  
+<div class="mat-elevation-z1">
+
+<mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Número</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.id}}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Título</mat-header-cell>
+        <mat-cell *matCellDef="let row" >{{row.titulo}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="situacao">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Situação</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.situacao.descricao}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="responsavel">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Responsável</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.responsavel.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Gerenciar</mat-header-cell>
+
+        <mat-cell *matCellDef="let row; let i=index;">
+            <button mat-icon-button color="accent" (click)="goToProjectManage(row.id)">
+                <mat-icon aria-label="table_chart">table_chart</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator #paginator
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+</div>
+  

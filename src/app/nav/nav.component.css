@@ -1,0 +1,35 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+mat-sidenav-content section {
+  padding-left: 100px;
+  padding-top: 24px;
+  padding-right: 100px;
+  padding-bottom: 24px;
+}
+
+::ng-deep div.mat-menu-panel {
+  min-width: 112px;
+    /** set width to 500px */
+  max-width: 500px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 48px);
+  border-radius: 4px;
+  outline: 0;
+}

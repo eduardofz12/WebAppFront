@@ -1,0 +1,9 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card>
+    <mat-card-title>Projeto asdlaskdas</mat-card-title>
+    <mat-card-content class="teste">
+        <div>
+            <app-list (loading)="setLoading($event)" *ngFor="let list of lists" [projectId]="1" [list]="list" [cardStore]="cardStore" ></app-list>
+        </div>
+    </mat-card-content>
+</mat-card>

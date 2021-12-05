@@ -1,0 +1,74 @@
+mat-card {
+    width: 100%;
+    height: 100%;
+}
+
+mat-card-content {
+    margin-top: 20px;
+}
+
+div {
+    display: flex;
+    padding: 0 5px;
+    height: 100vh;
+    overflow-x: scroll;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+
+#card-promocoes {
+    margin-bottom: 0;
+}
+
+mat-form-field {
+    width: 100%;
+    font-size: 14px;
+}
+
+#titulo-ideia{
+    width:90%; 
+    padding-left: 15px;
+}
+
+#status{
+    width: 25%;
+}
+
+#nome-responsavel{
+    width:85%; 
+    padding-left: 15px;
+}
+
+#titulo {
+    width: 25%;
+}
+
+#descricao{
+    padding-left: 1%;
+    width: 75%;
+}
+
+#start-date {
+    padding-left: 2%;
+    width: 23.5%;
+}
+
+#end-date {
+    padding-left: 1%;
+    width: 23.5%;
+}
+
+#inclusao-date {
+    padding-left: 4%;
+    width: 28.0%;
+}
+
+table {
+    width: 100%;
+}
+
+.column-to-right {
+    text-align: right;
+    justify-content: flex-end;
+}

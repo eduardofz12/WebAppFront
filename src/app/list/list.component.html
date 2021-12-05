@@ -1,0 +1,19 @@
+<div class="list" (dragover)="allowDrop($event)" (drop)="updateStatus($event)" id="{{list.id}} + {{list.name}}">
+	<p class="list__title"><strong>{{list.name}}</strong></p>
+	<div class="cards">
+		<app-card (cardUpdated)="setUpdatedCard($event);" 
+		*ngFor="let card of list.cards" [listNumber]="list.id" [card]="card"></app-card>
+	</div>
+	
+	<input #addCardInput type="text" 
+	*ngIf="displayAddCard" autofocus>
+	
+	<!-- <button class="list__newcard" mat-icon-button color="black" (click)="toggleDisplayAddCard();">
+		<mat-icon aria-label="Adicionar atividade">add</mat-icon>
+	</button> -->
+
+	<button class="list__newcard" mat-icon-button color="black" (click)="createAtividade(list.id, list.name);">
+		<mat-icon aria-label="Adicionar atividade">add</mat-icon>
+	</button>
+	
+</div>

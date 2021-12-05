@@ -1,0 +1,25 @@
+mat-card {
+    margin-bottom: 24px;
+}
+
+#card-promocoes {
+    margin-bottom: 0;
+}
+
+mat-form-field {
+    width: 100%;
+    font-size: 14px;
+}
+
+#end-date {
+    width: 48.5%;
+}
+
+table {
+    width: 100%;
+}
+
+.column-to-right {
+    text-align: right;
+    justify-content: flex-end;
+}

@@ -1,0 +1,73 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card *ngIf="projeto" style="background-color: rgb(235, 233, 149);">
+    <mat-card-content class="teste">
+        <mat-card>
+            <mat-card-title>{{"Projeto " + projeto.id}}</mat-card-title>
+            <mat-card-content>
+                <form [formGroup]="form">
+                    <mat-form-field appearance="outline" id="titulo">
+                        <mat-label>Título</mat-label>
+                        <input matInput formControlName="titulo" readonly>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" id="descricao">
+                        <mat-label>Descrição</mat-label>
+                        <input matInput readonly formControlName="descricao">
+                    </mat-form-field>
+                        <mat-form-field appearance="outline" style="width:10%">
+                            <mat-label>Código ideia</mat-label>
+                            <input matInput type="number" formControlName="ideiaCodigo" readonly>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" id="titulo-ideia">
+                            <mat-label>Título ideia</mat-label>
+                            <input matInput formControlName="ideiaTitulo" readonly>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" hideRequiredMarker style="width:10%">
+                            <mat-label>Código responsável</mat-label>
+                            <input matInput formControlName="responsavelCodigo" (focusout)="findResponsavel($event)" required>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" hideRequiredMarker id="nome-responsavel">
+                            <mat-label>Nome responsável</mat-label>
+                            <input matInput formControlName="responsavelNome" readonly required>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" hideRequiredMarker id="situacao">
+                            <mat-label>Situação</mat-label>
+                            <mat-select formControlName="situacao" disableOptionCentering required>
+                              <mat-option [value]="option.id" *ngFor="let option of situacoes">{{ option.descricao }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" id="start-date">
+                            <mat-label>Data inicio</mat-label>
+                            <input  matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate" formControlName="dataInicio">
+                            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                            <mat-datepicker #startDate></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" id="end-date">
+                            <mat-label>Data término</mat-label>
+                            <input matInput  [min]="minDate" [max]="maxDate" [matDatepicker]="endDate" formControlName="dataTermino">
+                            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                            <mat-datepicker #endDate></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" id="inclusao-date">
+                            <mat-label>Data inclusão</mat-label>
+                            <input matInput  [min]="minDate" [max]="maxDate" [matDatepicker]="inclusaoDate" formControlName="dataInclusao">
+                            <mat-datepicker-toggle matSuffix [for]="inclusaoDate"></mat-datepicker-toggle>
+                            <mat-datepicker #inclusaoDate></mat-datepicker>
+                        </mat-form-field>
+                    <mat-card-actions align="end">
+                        <button mat-stroked-button color="primary" (click)="loadCard()">Reverter</button>
+                        <button mat-stroked-button color="primary" (click)="onSubmit()" [disabled]="!form.valid">Salvar</button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    
+        <mat-card>
+            <div>
+                <app-list (loading)="setLoading($event)" (updateLists)="updateLists($event)" *ngFor="let list of lists" [projectId]="1" [list]="list" [cardStore]="cardStore" ></app-list>
+            </div>
+        </mat-card>
+    </mat-card-content>
+</mat-card>
+<mat-card *ngIf="naoEncontrado" style="width: 200px;">
+    <span>Projeto não encontrado</span>
+</mat-card>

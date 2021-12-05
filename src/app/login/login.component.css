@@ -1,0 +1,48 @@
+mat-card {
+    width: 400px;
+}
+
+.main-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+mat-card-subtitle {
+    text-align: justify;
+}
+
+#options {
+    display: inline-block;
+}
+
+#forgotPassword {
+    margin-bottom: 20px;
+}
+
+#forgotPassword a {
+    color: #007a72;
+    text-decoration: none;
+}
+
+#createAccount {
+    color: #007a72;
+    text-decoration: none;
+}
+
+#buttonLogin {
+    float: right;
+}
+
+mat-form-field {
+    display: inline;
+}
+
+#buttonPassword {
+    cursor: pointer;
+}
+
+mat-card-actions {
+    margin-bottom: 0;
+}

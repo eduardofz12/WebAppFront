@@ -1,0 +1,119 @@
+<mat-toolbar color="accent">
+  <button mat-icon-button matTooltip="Application Menu" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  Menu
+  <span style="flex: 1 1 auto;"></span>
+  <div>
+    <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="accountMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #accountMenu [overlapTrigger]="false" yPosition="below">
+      <button mat-menu-item routerLink="#">
+        <mat-icon>person</mat-icon><span>Perfil</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>help</mat-icon><span>Ajuda</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>Logout
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container style="height: calc(100% - 64px); margin: 0;">
+  <mat-sidenav #sidenav mode="side" [class.mat-elevation-z4]="true" style="width: 240px">
+    <mat-nav-list dense>
+      <mat-list-item routerLink="/dashboard/home">Home</mat-list-item>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Desafio
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/challenge">Consulta</a>
+          <a mat-list-item routerLink="/dashboard/challenge/edit">Cadastro</a>
+          <!-- <a mat-list-item routerLink="/dashboard/challenge/solution">Solução - deprecated</a> -->
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Ideia
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/idea">Consulta</a>
+          <a mat-list-item routerLink="/dashboard/idea/edit">Cadastro</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Projeto de Inovação
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/project">Consulta</a>
+          <a mat-list-item routerLink="/dashboard/project/edit">Cadastro</a>
+          <!-- <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+            <mat-expansion-panel-header>
+              Atividade depreciado
+            </mat-expansion-panel-header>
+            <mat-nav-list dense>
+              <a mat-list-item routerLink="/dashboard/project/activity">Consulta</a>
+              <a mat-list-item routerLink="/dashboard/project/activity/edit">Cadastro</a>
+            </mat-nav-list>
+          </mat-expansion-panel> -->
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Usuários
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/idea">Consulta</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <!-- <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Organizações
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/organization">Consulta</a>
+          <a mat-list-item routerLink="/dashboard/organization/edit">Cadastro</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Entidades Parceiras
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/partner">Consulta</a>
+          <a mat-list-item routerLink="/dashboard/partner/edit">Cadastro</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true" dense>
+        <mat-expansion-panel-header>
+          Pesquisadores
+        </mat-expansion-panel-header>
+        <mat-nav-list dense>
+          <a mat-list-item routerLink="/dashboard/researcher">Consulta</a>
+          <a mat-list-item routerLink="/dashboard/researcher/edit">Cadastro</a>
+        </mat-nav-list>
+      </mat-expansion-panel> -->
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <section>
+      <router-outlet></router-outlet>
+    </section>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

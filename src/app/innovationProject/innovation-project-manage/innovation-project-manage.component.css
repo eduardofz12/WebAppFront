@@ -1,0 +1,68 @@
+div {
+    display: flex;
+    padding: 0 5px;
+    height: 100vh;
+    overflow-x: scroll;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+mat-card {
+    margin-bottom: 24px;
+}
+
+#card-promocoes {
+    margin-bottom: 0;
+}
+
+mat-form-field {
+    width: 100%;
+    font-size: 14px;
+}
+
+#titulo-ideia{
+    width:90%; 
+    padding-left: 15px;
+}
+
+#situacao{
+    width: 20%;
+}
+
+#nome-responsavel{
+    width:90%; 
+    padding-left: 15px;
+}
+
+#titulo {
+    width: 25%;
+}
+
+#descricao{
+    padding-left: 1%;
+    width: 75%;
+}
+
+#start-date {
+    padding-left: 5%;
+    width: 25.5%;
+}
+
+#end-date {
+    padding-left: 1%;
+    width: 25.5%;
+}
+
+#inclusao-date {
+    padding-left: 4%;
+    width: 29.0%;
+}
+
+table {
+    width: 100%;
+}
+
+.column-to-right {
+    text-align: right;
+    justify-content: flex-end;
+}

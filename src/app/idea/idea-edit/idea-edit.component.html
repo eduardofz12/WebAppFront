@@ -1,0 +1,32 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card>
+    <mat-card-title>Cadastro de ideia</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="fill" hideRequiredMarker>
+                <mat-label>Desafio</mat-label>
+                <mat-select formControlName="desafio" [required]="isDesafioRequired()">
+                    <mat-option [value]="option.id" *ngFor="let option of challenges">{{ option.id + " - " + option.titulo }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" required minlength="5" maxlength="60">
+                <mat-hint align="end">Máximo de 60 caracteres.</mat-hint>
+                <mat-error *ngIf="hasError('titulo', 'required')">Título é obrigatório</mat-error>
+                <mat-error *ngIf="hasError('titulo', 'minlength')">Título deve ter pelo menos 5 caracteres</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" hideRequiredMarker>
+                <mat-label>Descrição</mat-label>
+                <textarea matInput formControlName="descricao" required></textarea>
+                <mat-error *ngIf="hasError('descricao', 'required')">Descrição é obrigatória</mat-error>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button *ngIf="this.id" mat-stroked-button (click)="newIdea()" style="margin: 0px">Novo</button>
+                <button mat-stroked-button type="reset">Limpar</button>
+                <button mat-stroked-button color="primary" [disabled]="!form.valid"
+                    (click)="onSubmit()">Cadastrar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

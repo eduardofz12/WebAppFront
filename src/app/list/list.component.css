@@ -1,0 +1,29 @@
+.list {
+	background:rgb(171, 204, 144);
+	width: 250px;
+	padding: 6px;
+	margin: 5px;
+	display: inline-block;
+}
+
+.list__title {
+	margin: 0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+.list a {
+	width: 100%;
+	display: block;
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+input{
+  width: 230px;
+  padding: 10px;
+  border: 1px solid violet;
+  outline: 0;
+  background: #fff;
+  box-shadow:none;
+}

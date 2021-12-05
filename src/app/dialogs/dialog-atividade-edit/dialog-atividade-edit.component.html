@@ -1,0 +1,50 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<mat-card>
+    <mat-card-title>abluble</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline" id="titulo" hideRequiredMarker>
+                <mat-label>Título</mat-label>
+                <input matInput formControlName="titulo" required>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="descricao">
+                <mat-label>Descrição</mat-label>
+                <input matInput formControlName="descricao" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width:15%">
+                <mat-label>Responsável</mat-label>
+                <input matInput formControlName="responsavelCodigo" (focusout)="findResponsavel($event)" >
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="nome-responsavel">
+                <mat-label>Nome responsável</mat-label>
+                <input matInput formControlName="responsavelNome" readonly>
+            </mat-form-field>
+            <mat-form-field appearance="fill" hideRequiredMarker id="status">
+                <mat-label>Status</mat-label>
+                <input matInput formControlName="statusF">
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="start-date">
+                <mat-label>Data inicio</mat-label>
+                <input  matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate" formControlName="dataInicio">
+                <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+                <mat-datepicker #startDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="end-date">
+                <mat-label>Data término</mat-label>
+                <input matInput  [min]="minDate" [max]="maxDate" [matDatepicker]="endDate" formControlName="dataTermino">
+                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" id="inclusao-date">
+                <mat-label>Data inclusão</mat-label>
+                <input matInput  [min]="minDate" [max]="maxDate" [matDatepicker]="inclusaoDate" formControlName="dataInclusao">
+                <mat-datepicker-toggle matSuffix [for]="inclusaoDate"></mat-datepicker-toggle>
+                <mat-datepicker #inclusaoDate></mat-datepicker>
+            </mat-form-field>
+            <mat-card-actions align="end">
+                <button *ngIf="atividade" mat-stroked-button color="primary" (click)="loadCard()">Reverter</button>
+                <button mat-stroked-button color="primary" (click)="save()" [disabled]="!form.valid">Salvar</button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

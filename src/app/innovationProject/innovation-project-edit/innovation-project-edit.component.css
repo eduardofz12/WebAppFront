@@ -1,0 +1,51 @@
+mat-card {
+    margin-bottom: 24px;
+}
+
+#card-promocoes {
+    margin-bottom: 0;
+}
+
+mat-form-field {
+    width: 100%;
+    font-size: 14px;
+}
+
+#end-date {
+    width: 48.5%;
+}
+
+table {
+    width: 100%;
+}
+
+.column-to-right {
+    text-align: right;
+    justify-content: flex-end;
+}
+
+#start-date {
+    width: 23.5%;
+}
+
+#end-date {
+  margin-left: 0.5%;
+  width: 23.5%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ::ng-deep.mat-form-field-appearance-outline.mat-form-field-outline.mat-input-element:disabled {
+    background-color: rgb(0, 0, 0);
+    border-radius: 5px;
+} */

@@ -1,0 +1,17 @@
+.main-div{
+    font-size: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mat-card-title {
+      font-size: 50px;
+  }
+  .mat-card-subtitle, .mat-card-content {
+    font-size: 25px; 
+  }
+  mat-card {
+    width: 400px;
+}
