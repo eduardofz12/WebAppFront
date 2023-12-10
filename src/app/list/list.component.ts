@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';

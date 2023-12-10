@@ -55,9 +55,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/theme.scss",
-              "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.css"
+              "src/theme.scss"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
@@ -97,18 +95,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "WebApp:build"
+            "buildTarget": "WebApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "WebApp:build:production"
+              "buildTarget": "WebApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "WebApp:build"
+            "buildTarget": "WebApp:build"
           }
         },
         "test": {
@@ -156,6 +154,5 @@
         }
       }
     }
-  },
-  "defaultProject": "WebApp"
+  }
 }

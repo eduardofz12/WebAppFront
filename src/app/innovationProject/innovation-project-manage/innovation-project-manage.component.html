@@ -60,9 +60,9 @@
                 </form>
             </mat-card-content>
         </mat-card>
-    
+
         <mat-card>
-            <div>
+            <div class="board-wrapper">
                 <app-list (loading)="setLoading($event)" (updateLists)="updateLists($event)" *ngFor="let list of lists" [projectId]="1" [list]="list" [cardStore]="cardStore" ></app-list>
             </div>
         </mat-card>

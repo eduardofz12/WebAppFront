@@ -1,19 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {MatDialog} from '@angular/material/dialog';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {BehaviorSubject, fromEvent, merge, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import {MatSelectModule} from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { environment } from 'src/environments/environment';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { CardStore } from 'src/app/interfaces/cardstore';
-import { ListSchema } from 'src/app/interfaces/listschema';
-import { ListComponent } from 'src/app/list/list.component';
+import {Component, OnInit} from '@angular/core';
+import {CardStore} from 'src/app/interfaces/cardstore';
+import {ListSchema} from 'src/app/interfaces/listschema';
 
 @Component({
   selector: 'app-innovation-project-activity-edit',
@@ -21,7 +8,7 @@ import { ListComponent } from 'src/app/list/list.component';
   styleUrls: ['./innovation-project-activity-edit.component.css']
 })
 export class InnovationProjectActivityEditComponent implements OnInit {
-  
+
   cardStore!: CardStore;
   lists!: ListSchema[];
 
@@ -35,7 +22,7 @@ export class InnovationProjectActivityEditComponent implements OnInit {
 
   setMockData(): void {
     this.cardStore = new CardStore();
-    const lists: ListSchema[] = [
+    this.lists = [
       {
         id: 1,
         name: 'To Do',
@@ -57,12 +44,11 @@ export class InnovationProjectActivityEditComponent implements OnInit {
         cards: []
       },
       {
-        id:5,
+        id: 5,
         name: 'Done',
         cards: []
       }
-    ]
-    this.lists = lists;
+    ];
   }
 
   ngOnInit() {

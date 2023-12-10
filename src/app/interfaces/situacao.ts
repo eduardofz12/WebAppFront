@@ -1,5 +1,5 @@
 export interface Situacao {
-    id:number
-    descricao:string;
-    ativa:string;
+    id: number;
+    descricao: string;
+    ativa: string;
 }

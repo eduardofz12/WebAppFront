@@ -27,34 +27,34 @@ import { SolutionEditComponent } from './solution/solution-edit/solution-edit.co
 import { SolutionSearchComponent } from './solution/solution-search/solution-search.component';
 
 const routes: Routes = [
-  {path:'', pathMatch:'full',redirectTo:'login'},
-  {path:'login', component:LoginComponent},
-  {path:'dashboard', component:DashboardComponent, canActivate: [AuthGuardService], children:[
-    {path:'home', component:HomeComponent},
-    {path:'challenge', component:ChallengeSearchComponent},
-    {path:'challenge/edit', component:ChallengeEditComponent},
-    {path:'challenge/edit/:id', component:ChallengeEditComponent},
-    {path:'challenge/solution', component:SolutionSearchComponent},
-    {path:'challenge/solution/edit', component:SolutionEditComponent},
-    {path:'idea', component:IdeaSearchComponent},
-    {path:'idea/edit', component:IdeaEditComponent},
-    {path:'idea/edit/:id', component:IdeaEditComponent},
-    {path:'project', component:InnovationProjectSearchComponent},
-    {path:'project/edit', component:InnovationProjectEditComponent},
-    {path:'project/manage/:id', component:InnovationProjectManageComponent},
-    {path:'project/activity', component:InnovationProjectActivitySearchComponent},
-    {path:'project/activity/edit', component:InnovationProjectActivityEditComponent},
-    {path:'organization', component:OrganizationSearchComponent},
-    {path:'organization/edit', component:OrganizationEditComponent},
-    {path:'organization/profile', component:OrganizationProfileComponent},
-    {path:'partner', component:PartnerEntitySearchComponent},
-    {path:'partner/edit', component:PartnerEntityEditComponent},
-    {path:'partner/profile', component:PartnerEntityProfileComponent},
-    {path:'researcher', component:ResearcherSearchComponent},
-    {path:'researcher/edit', component:ResearcherEditComponent},
-    {path:'researcher/profile', component:ResearcherProfileComponent}
+  {path: '', pathMatch: 'full', redirectTo: 'login'},
+  {path: 'login', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children: [
+    {path: 'home', component: HomeComponent},
+    {path: 'challenge', component: ChallengeSearchComponent},
+    {path: 'challenge/edit', component: ChallengeEditComponent},
+    {path: 'challenge/edit/:id', component: ChallengeEditComponent},
+    {path: 'challenge/solution', component: SolutionSearchComponent},
+    {path: 'challenge/solution/edit', component: SolutionEditComponent},
+    {path: 'idea', component: IdeaSearchComponent},
+    {path: 'idea/edit', component: IdeaEditComponent},
+    {path: 'idea/edit/:id', component: IdeaEditComponent},
+    {path: 'project', component: InnovationProjectSearchComponent},
+    {path: 'project/edit', component: InnovationProjectEditComponent},
+    {path: 'project/manage/:id', component: InnovationProjectManageComponent},
+    {path: 'project/activity', component: InnovationProjectActivitySearchComponent},
+    {path: 'project/activity/edit', component: InnovationProjectActivityEditComponent},
+    {path: 'organization', component: OrganizationSearchComponent},
+    {path: 'organization/edit', component: OrganizationEditComponent},
+    {path: 'organization/profile', component: OrganizationProfileComponent},
+    {path: 'partner', component: PartnerEntitySearchComponent},
+    {path: 'partner/edit', component: PartnerEntityEditComponent},
+    {path: 'partner/profile', component: PartnerEntityProfileComponent},
+    {path: 'researcher', component: ResearcherSearchComponent},
+    {path: 'researcher/edit', component: ResearcherEditComponent},
+    {path: 'researcher/profile', component: ResearcherProfileComponent}
   ]},
-  { path: '**', component:PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

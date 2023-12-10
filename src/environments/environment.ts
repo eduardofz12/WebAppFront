@@ -8,9 +8,9 @@ export const environment = {
   usuariosUrl: 'usuarios',
   challengeUrl: 'desafios',
   activityUrl: 'atividades',
-  ideaUrl:'ideias',
-  situacaoUrl:"situacoes",
-  innovationProjectUrl:"projetos",
+  ideaUrl: 'ideias',
+  situacaoUrl: 'situacoes',
+  innovationProjectUrl: 'projetos',
   minDate: new Date(2021, 0, 1),
   maxDate: new Date(2050, 11, 31),
   situacoes: [
@@ -37,8 +37,6 @@ export const MY_FORMATS = {
       monthYearA11yLabel: 'YYYY'
   }
 };
-
-export const baseUrl = 'localhost:8080/api/v1/';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

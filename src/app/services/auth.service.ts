@@ -8,8 +8,8 @@ import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
-@Injectable({ 
-    providedIn: 'root' 
+@Injectable({
+    providedIn: 'root'
 })
 export class AuthService {
     private currentUserSubject!: BehaviorSubject<User | any>;
@@ -35,35 +35,35 @@ export class AuthService {
 
         let headers = new HttpHeaders();
         headers = headers.set('Authorization', 'Basic YmF0YXRhOnhxZGw=');
-        
+
         return this.http.post<User>(`${environment.apiUrl}${environment.usuariosUrl}/login`, user, {headers})
-            .pipe(map((user: User) => {
-                if(user == null) {
-                    throw new Error("Usuário não encontrado.");
+            .pipe(map((userR: User) => {
+                if (userR == null) {
+                    throw new Error('Usuário não encontrado.');
                 }
-                user.desafios = [];
-                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                userR.desafios = [];
+                sessionStorage.setItem('currentUser', JSON.stringify(userR));
                 if (remindLogin) {
-                    localStorage.setItem('ultimoLogin', user.email);
+                    localStorage.setItem('ultimoLogin', userR.email);
                 } else {
                     localStorage.removeItem('ultimoLogin');
                 }
-                
-                this.currentUserSubject = new BehaviorSubject<User>(user);
+
+                this.currentUserSubject = new BehaviorSubject<User>(userR);
                 this.currentUser = this.currentUserSubject.asObservable();
-                
-                return user;
+
+                return userR;
             }));
     }
 
-    logout() {
+    logout(): void {
         sessionStorage.removeItem('currentUser');
         sessionStorage.removeItem('lastItem');
         this.currentUserSubject.next(null);
         this.router.navigate(['/login']);
     }
 
-    usuarioLogado() {
+    usuarioLogado(): User|any {
         return this.currentUserSubject.value;
     }
 }

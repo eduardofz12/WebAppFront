@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RegistrationComponent } from './registration/registration.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -111,7 +109,6 @@ import { DialogAtividadeEditComponent } from './dialogs/dialog-atividade-edit/di
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -143,11 +140,5 @@ import { DialogAtividadeEditComponent } from './dialogs/dialog-atividade-edit/di
       DataService,
       { provide: DateAdapter, useClass: UserDateAdapter }],
   bootstrap: [AppComponent],
-  entryComponents: [
-    DialogIncorrectUserComponent,
-    DialogSessionOutComponent,
-    DialogChallengeDetailsComponent,
-    DialogAtividadeEditComponent
-  ]
 })
 export class AppModule { }

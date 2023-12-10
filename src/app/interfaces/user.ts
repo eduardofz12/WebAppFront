@@ -1,4 +1,4 @@
-import { Challenge } from "./challenge";
+import { Challenge } from './challenge';
 
 export interface User {
     id: number;

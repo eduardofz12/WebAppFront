@@ -9,25 +9,27 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 })
 export class HomeComponent {
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
+  cards;
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.cards = breakpointObserver.observe(Breakpoints.Handset).pipe(
+      map(({ matches }) => {
+        if (matches) {
+          return [
+            { title: 'Projeto de inovação', cols: 1, rows: 1 },
+            { title: 'Desafio', cols: 1, rows: 1 },
+            { title: 'Ideias cadastradas', cols: 1, rows: 1 },
+            { title: 'Desafio', cols: 1, rows: 1 }
+          ];
+        }
+
         return [
-          { title: 'Projeto de inovação', cols: 1, rows: 1 },
+          { title: 'Projeto de inovação', cols: 2, rows: 1 },
           { title: 'Desafio', cols: 1, rows: 1 },
-          { title: 'Ideias cadastradas', cols: 1, rows: 1 },
+          { title: 'Ideias cadastradas', cols: 1, rows: 2 },
           { title: 'Desafio', cols: 1, rows: 1 }
         ];
-      }
-
-      return [
-        { title: 'Projeto de inovação', cols: 2, rows: 1 },
-        { title: 'Desafio', cols: 1, rows: 1 },
-        { title: 'Ideias cadastradas', cols: 1, rows: 2 },
-        { title: 'Desafio', cols: 1, rows: 1 }
-      ];
-    })
-  );
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
+      })
+    );
+  }
 }

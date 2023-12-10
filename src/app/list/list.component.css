@@ -1,9 +1,8 @@
-.list {
-	background:rgb(171, 204, 144);
-	width: 250px;
-	padding: 6px;
-	margin: 5px;
-	display: inline-block;
+.list-wrapper {
+  background:rgb(171, 204, 144);
+  display: grid;
+  place-items: initial;
+  padding: 6px;
 }
 
 .list__title {
@@ -14,7 +13,7 @@
 
 .list a {
 	width: 100%;
-	display: block;
+	display: flex;
 	text-decoration: none;
 	margin-top: 10px;
 }

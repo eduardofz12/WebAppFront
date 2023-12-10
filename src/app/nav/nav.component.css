@@ -17,10 +17,7 @@
 }
 
 mat-sidenav-content section {
-  padding-left: 100px;
-  padding-top: 24px;
-  padding-right: 100px;
-  padding-bottom: 24px;
+  padding: 24px 60px;
 }
 
 ::ng-deep div.mat-menu-panel {

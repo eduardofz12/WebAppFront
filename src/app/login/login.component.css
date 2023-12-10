@@ -7,7 +7,7 @@ mat-card {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 
 mat-card-subtitle {
     text-align: justify;

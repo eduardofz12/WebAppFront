@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-import { Activity } from '../interfaces/activity';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {lastValueFrom, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {environment} from 'src/environments/environment';
+import {Activity} from '../interfaces/activity';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,7 @@ export class ActivityService {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Basic YmF0YXRhOnhxZGw=');
 
-    return this.http.get<Activity[]>(`${environment.apiUrl}${environment.activityUrl}`, { headers, params }).toPromise();
+    return lastValueFrom(this.http.get<Activity[]>(`${environment.apiUrl}${environment.activityUrl}`, { headers, params }));
   }
 
   public getActivityById(id: string): Observable<Activity> {
@@ -37,25 +37,25 @@ export class ActivityService {
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Basic YmF0YXRhOnhxZGw=');
 
-    return this.http.get<Activity>(`${environment.apiUrl}${environment.activityUrl}/` + id, { headers}).toPromise();
+    return lastValueFrom(this.http.get<Activity>(`${environment.apiUrl}${environment.activityUrl}/` + id, { headers}));
   }
 
   saveActivity(activity: Activity): Observable<Activity> {
 
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', 'Basic YmF0YXRhOnhxZGw=');
-    
+
     return this.http.post<Activity>(`${environment.apiUrl}${environment.activityUrl}`, activity, {headers})
         .pipe(map((activity: Activity) => {
-            if(activity == null) {
-                throw new Error("Erro ao cadastrar atividade.");
+            if (activity == null) {
+                throw new Error('Erro ao cadastrar atividade.');
             }
             return activity;
         }));
   }
 
   public createActivityObject(...args: any[]): Activity {
-    let atividade : Activity = {
+    return {
       id: args[0],
       titulo: args[1],
       descricao: args[2],
@@ -68,7 +68,6 @@ export class ActivityService {
       dataInclusao: args[9],
       responsavel: args[10]
     };
-    return atividade;
   }
 
 }
